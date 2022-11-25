@@ -9,6 +9,11 @@ pipeline {
              git branch: 'master',url:'https://github.com/mahabaraket/black-dashboard-angular.git'
             }
         }
+           stage('emplacement') {
+            steps {
+               sh 'pwd'
+            }
+        }
       }
       post {
     success { mail to: "mahaa.baraket@gmail.com",
