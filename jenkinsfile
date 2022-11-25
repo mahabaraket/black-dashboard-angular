@@ -9,7 +9,7 @@ pipeline {
              git branch: 'master',url:'https://github.com/mahabaraket/black-dashboard-angular.git'
             }
         }
-      
+      }
       post {
     success { mail to: "mahaa.baraket@gmail.com",
                     subject: "Build sucess",
