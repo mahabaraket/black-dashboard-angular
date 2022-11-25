@@ -12,6 +12,7 @@ pipeline {
            stage('emplacement') {
             steps {
                sh 'pwd'
+               sh 'll'
             }
         }
       }
