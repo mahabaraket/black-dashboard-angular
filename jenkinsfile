@@ -12,9 +12,8 @@ pipeline {
        stage ('Check Tools Initializing') {
             steps {
                 sh 'node --version'
-                sh '
-                    echo "Nodejs = ${Nodejs}"
-                '
+                sh ''' echo "Nodejs = ${Nodejs}"
+                '''
             }
         }
        stage('Git checkout') {
