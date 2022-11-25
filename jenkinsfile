@@ -3,11 +3,8 @@ pipeline {
     agent any
 
  tools {
-    
-     nodejs 'Nodejs'
-
-    
-  }
+         nodejs 'Nodejs'
+      }
     stages {
        stage ('Check Tools Initializing') {
             steps {
@@ -25,10 +22,16 @@ pipeline {
              git branch: 'master',url:'https://github.com/mahabaraket/black-dashboard-angular.git'
             }
         }
-           stage('emplacement') {
+           stage('Packages Installations') {
             steps {
                sh 'pwd'
               sh 'npm install'
+            }
+        }
+                   stage('BUILD') {
+            steps {
+              
+              sh 'ng serve'
             }
         }
       }
