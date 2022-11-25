@@ -3,18 +3,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Install') {
+        stage('Git checkout') {
             steps {
-                echo 'package Installation'
-                sh 'npm install'
+               
+             git branch:'master',url:'https://github.com/mahabaraket/black-dashboard-angular'
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Build instruction'
-                sh 'ng serve'           }
-        }
-    }
+      
       post {
     success { mail to: "mahaa.baraket@gmail.com",
                     subject: "Build sucess",
