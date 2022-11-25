@@ -12,7 +12,7 @@ pipeline {
            stage('emplacement') {
             steps {
                sh 'pwd'
-               sh 'll'
+              sh 'cd black-dashboard-angular '
             }
         }
       }
