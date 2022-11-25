@@ -1,1 +1,28 @@
 
+pipeline {
+    agent any
+
+    stages {
+        stage('Install') {
+            steps {
+                echo 'package Installation'
+                sh 'npm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Build instruction'
+                sh 'ng serve'           }
+        }
+    }
+      post {
+    success { mail to: "mahaa.baraket@gmail.com",
+                    subject: "Build sucess",
+                    body: "sucess"
+             echo 'successful'}
+    failure { mail to: "mahaa.baraket@gmail.com",
+                    subject: "Build failed",
+                    body: "failed"
+             echo 'failed'}
+  }
+}
