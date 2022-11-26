@@ -32,7 +32,8 @@ pipeline {
                    stage('BUILD') {
             steps {
               
-              sh 'ng serve'
+           echo 'Build'
+             sh 'ng build --prod --base-href=/black-dashboard-angular/ && cd dist/black-dashboard-angular && jar -cvf black-dashboard-angular.war *'
             }
         }
       }
