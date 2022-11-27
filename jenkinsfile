@@ -4,6 +4,7 @@ pipeline {
 
  tools {
          nodejs 'Nodejs'
+         docker 'Docker'
       }
     stages {
        stage ('Check Tools Initializing') {
@@ -12,7 +13,7 @@ pipeline {
                 sh 'ng --version'
                 sh 'node --version'
                 sh 'npm -v'
-               
+               sh'docker --version'
                 sh ''' echo "Nodejs = ${Nodejs}"
                 '''
             }
