@@ -42,9 +42,13 @@ pipeline {
                     subject: "Build sucess",
                     body: "sucess"
              echo 'successful'}
-    failure { mail to: "mahaa.baraket@gmail.com",
-                    subject: "Build failed",
+    failure { mailext to: "mahaa.baraket@gmail.com",
+                    subject: "Jenkins Build failed",
                     body: "failed"
+             echo 'failed'}
+              always { mailext to: "mahaa.baraket@gmail.com",
+                    subject: "Jenkins Build :${currentBuild.currentResult} : ${env.JOB_NAME}",
+                    body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
              echo 'failed'}
   }
 }
