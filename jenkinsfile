@@ -37,13 +37,13 @@ pipeline {
              sh 'npm run build'
             }
         }
-       /*  stage('Docker login') {
+        stage('Docker login') {
       steps {
          sh 'echo "Docker login is processing ...."'
         sh 'docker login --username mahabara --password Maha.12345'
 
       }
-    }*/
+    }
          stage('Docker build image') {
       steps {
          sh 'echo "Docker build image is processing ...."'
