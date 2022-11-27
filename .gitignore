@@ -9,6 +9,7 @@
 
 # dependencies
 /node_modules
+ .dockerignore
 
 # profiling files
 chrome-profiler-events.json
