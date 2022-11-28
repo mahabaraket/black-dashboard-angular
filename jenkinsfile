@@ -34,6 +34,16 @@ pipeline {
                
              git branch: 'master',url:'https://github.com/mahabaraket/black-dashboard-angular.git'
             }
+             post{
+               success { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'success'}
+               failure { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'failed'}
+            }
            
         }
            stage('Packages Installations') {
@@ -41,7 +51,17 @@ pipeline {
                sh 'pwd'
               sh 'npm install'
             }
-      
+        post{
+               success { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'success'}
+               failure { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'failed'}
+            }
+           
         }
            /*  stage('TEST') {
             steps {
@@ -56,6 +76,17 @@ pipeline {
            echo 'Build ...'
              sh 'npm run build'
             }
+              post{
+               success { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'success'}
+               failure { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'failed'}
+            }
+           
              
         }
         stage('Docker login') {
@@ -64,6 +95,17 @@ pipeline {
         sh 'docker login --username mahabara --password Maha.12345'
 
       }
+        post{
+               success { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'success'}
+               failure { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'failed'}
+            }
+           
     }
          stage('Docker build image') {
       steps {
@@ -71,6 +113,17 @@ pipeline {
          sh 'docker build -t mahabara/hidev .'
 
       }
+        post{
+               success { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'success'}
+               failure { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'failed'}
+            }
+           
        
     }
     
@@ -80,6 +133,17 @@ pipeline {
         sh 'docker push mahabara/hidev'
 
       }
+        post{
+               success { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'success'}
+               failure { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'failed'}
+            }
+           
        
     }
      stage('Docker Composs') {
@@ -88,7 +152,17 @@ pipeline {
         sh 'docker compose up'
 
       }
-       
+         post{
+               success { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'success'}
+               failure { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'failed'}
+            }
+           
     }
       }
       
