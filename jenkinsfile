@@ -17,51 +17,31 @@ pipeline {
                 sh ''' echo "Nodejs = ${Nodejs}"
                 '''
             }
-              post {
-        success { 
-            slackSend channel: '#notification', color: 'good', message: "${env.STAGE_NAME} is Success", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        unstable { 
-            slackSend channel: '#notification', color: 'warning', message: "${env.STAGE_NAME} is Unstable", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        failure { 
-            slackSend channel: '#notification', color: 'danger', message: "${env.STAGE_NAME} is Failed", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-    }
+            post{
+               success { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'success'}
+               failure { mail to: "maha.neufone@gmail.com",
+                    subject: "Jenkins Stage :${env.STAGE_NAME} is Success",
+                    body: "${env.STAGE_NAME} is Success"
+             echo 'failed'}
+            }
+           
         }
        stage('Git checkout') {
             steps {
                
              git branch: 'master',url:'https://github.com/mahabaraket/black-dashboard-angular.git'
             }
-              post {
-        success { 
-            slackSend channel: '#notification', color: 'good', message: "${env.STAGE_NAME} is Success", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        unstable { 
-            slackSend channel: '#notification', color: 'warning', message: "${env.STAGE_NAME} is Unstable", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        failure { 
-            slackSend channel: '#notification', color: 'danger', message: "${env.STAGE_NAME} is Failed", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-    }
+           
         }
            stage('Packages Installations') {
             steps {
                sh 'pwd'
               sh 'npm install'
             }
-              post {
-        success { 
-            slackSend channel: '#notification', color: 'good', message: "${env.STAGE_NAME} is Success", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        unstable { 
-            slackSend channel: '#notification', color: 'warning', message: "${env.STAGE_NAME} is Unstable", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        failure { 
-            slackSend channel: '#notification', color: 'danger', message: "${env.STAGE_NAME} is Failed", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-    }
+      
         }
            /*  stage('TEST') {
             steps {
@@ -76,17 +56,7 @@ pipeline {
            echo 'Build ...'
              sh 'npm run build'
             }
-              post {
-        success { 
-            slackSend channel: '#notification', color: 'good', message: "${env.STAGE_NAME} is Success", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        unstable { 
-            slackSend channel: '#notification', color: 'warning', message: "${env.STAGE_NAME} is Unstable", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        failure { 
-            slackSend channel: '#notification', color: 'danger', message: "${env.STAGE_NAME} is Failed", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-    }
+             
         }
         stage('Docker login') {
       steps {
@@ -94,17 +64,6 @@ pipeline {
         sh 'docker login --username mahabara --password Maha.12345'
 
       }
-        post {
-        success { 
-            slackSend channel: '#notification', color: 'good', message: "${env.STAGE_NAME} is Success", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        unstable { 
-            slackSend channel: '#notification', color: 'warning', message: "${env.STAGE_NAME} is Unstable", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        failure { 
-            slackSend channel: '#notification', color: 'danger', message: "${env.STAGE_NAME} is Failed", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-    }
     }
          stage('Docker build image') {
       steps {
@@ -112,17 +71,7 @@ pipeline {
          sh 'docker build -t mahabara/hidev .'
 
       }
-        post {
-        success { 
-            slackSend channel: '#notification', color: 'good', message: "${env.STAGE_NAME} is Success", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        unstable { 
-            slackSend channel: '#notification', color: 'warning', message: "${env.STAGE_NAME} is Unstable", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        failure { 
-            slackSend channel: '#notification', color: 'danger', message: "${env.STAGE_NAME} is Failed", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-    }
+       
     }
     
     stage('Docker push') {
@@ -131,17 +80,7 @@ pipeline {
         sh 'docker push mahabara/hidev'
 
       }
-        post {
-        success { 
-            slackSend channel: '#notification', color: 'good', message: "${env.STAGE_NAME} is Success", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        unstable { 
-            slackSend channel: '#notification', color: 'warning', message: "${env.STAGE_NAME} is Unstable", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        failure { 
-            slackSend channel: '#notification', color: 'danger', message: "${env.STAGE_NAME} is Failed", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-    }
+       
     }
      stage('Docker Composs') {
       steps {
@@ -149,17 +88,7 @@ pipeline {
         sh 'docker compose up'
 
       }
-        post {
-        success { 
-            slackSend channel: '#notification', color: 'good', message: "${env.STAGE_NAME} is Success", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        unstable { 
-            slackSend channel: '#notification', color: 'warning', message: "${env.STAGE_NAME} is Unstable", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-        failure { 
-            slackSend channel: '#notification', color: 'danger', message: "${env.STAGE_NAME} is Failed", teamDomain: 'testnotifgroup', tokenCredentialId: 'slack-token'
-        }
-    }
+       
     }
       }
       
