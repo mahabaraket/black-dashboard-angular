@@ -10,6 +10,7 @@ pipeline {
        stage ('Check Tools Initializing') {
             steps {
                 sh' npm install -g @angular/cli'
+                sh'yum install docker-compose-plugin'
                 sh 'ng --version'
                 sh 'node --version'
                 sh 'npm -v'
@@ -66,7 +67,13 @@ pipeline {
 
       }
     }
-    
+     stage('Docker Composs') {
+      steps {
+         sh 'echo "Docker compooss is processing ...."'
+        sh 'docker compose up'
+
+      }
+    }
       }
       
       post {
