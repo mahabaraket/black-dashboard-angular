@@ -149,7 +149,7 @@ pipeline {
      stage('Docker Composs') {
       steps {
          sh 'echo "Docker compooss is processing ...."'
-        sh 'docker compose up'
+        sh 'docker-compose up -d'
 
       }
          post{
