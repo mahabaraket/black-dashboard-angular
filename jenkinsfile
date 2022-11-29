@@ -167,14 +167,7 @@ pipeline {
       }
       
       post {
- /*   success { mail to: "maha.neufone@gmail.com",
-                    subject: "Build sucess",
-                    body: "sucess"
-             echo 'successful'}
-    failure { mail to: "maha.neufone@gmail.com",
-                    subject: "Jenkins Build failed",
-                    body: "failed"
-             echo 'failed'}*/
+ 
               always { mail to: "maha.neufone@gmail.com",
                     subject: "Jenkins Build :${currentBuild.currentResult} : ${env.JOB_NAME}",
                     body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
