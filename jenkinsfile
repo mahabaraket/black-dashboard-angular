@@ -9,11 +9,8 @@ pipeline {
     stages {
        stage ('Check Tools Initializing') {
             steps {
-                sh' npm install -g @angular/cli'
-                sh 'ng --version'
-                sh 'node --version'
-                sh 'npm -v'
-               sh'docker --version'
+               
+           
                 sh ''' echo "Nodejs = ${Nodejs}"
                 '''
             }
