@@ -63,14 +63,7 @@ pipeline {
             }
            
         }
-           /*  stage('TEST') {
-            steps {
-              
-           echo 'TEsTING ...'
-             sh 'npm run test'
-            }
-        }*/
-                   stage('BUILD') {
+             stage('BUILD') {
             steps {
               
            echo 'Build ...'
