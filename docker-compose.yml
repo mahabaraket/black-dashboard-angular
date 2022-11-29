@@ -6,6 +6,6 @@ services: # Here we define our service(s)
       ports: 
         - '4200:4200' # Port mapping
       volumes: # Volume binding
-        - './black-dashboard-angular /src/app'
+        - './black-dashboard-angular:/usr/src/app'
       command: > 
         bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
